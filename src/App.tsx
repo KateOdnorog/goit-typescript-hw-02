@@ -1,23 +1,24 @@
 import "./App.css";
-import fetchImg from "./services/api.js";
+import fetchImg from "./services/api";
 import SearchBar from "./components/SearchBar/SearchBar";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import Loader from "./components/Loader/Loader";
-import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn.jsx";
+import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
 import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { TypeImages } from "./types/types";
 
 const App = () => {
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [images, setImages] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [LoadMore, setLoadMore] = useState(false);
-  const [error, setError] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalImage, setModalImage] = useState(null);
+  const [query, setQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [images, setImages] = useState<TypeImages[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [LoadMore, setLoadMore] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [modalImage, setModalImage] = useState<TypeImages | null>(null);
 
   useEffect(() => {
     const getDate = async () => {
@@ -48,7 +49,7 @@ const App = () => {
     getDate();
   }, [query, page]);
 
-  const handleSubmitSearch = (query) => {
+  const handleSubmitSearch = (query: string) => {
     setQuery(query);
     setImages([]);
     setPage(1);
@@ -59,7 +60,7 @@ const App = () => {
     setPage((currentPage) => currentPage + 1);
   };
 
-  const handleClickImg = (id) => {
+  const handleClickImg = (id: string) => {
     if (!images.length) return;
     const image = images.find((img) => img.id === id);
     if (!image) return;
