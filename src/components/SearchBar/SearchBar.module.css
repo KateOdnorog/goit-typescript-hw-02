@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: center;
+  max-width: 1440px;
+  background-color: darkblue;
+  padding: 17px;
+  font-size: 14px;
+  color: black;
+  margin-bottom: 20px;
+  input {
+    min-width: 250px;
+    height: 30px;
+    padding: 3px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-right: 10px;
+  }
+  button {
+    width: 78px;
+    height: 38px;
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: bisque;
+    font-weight: bold;
+    &:focus,
+    &:hover {
+      background-color: burlywood;
+    }
+  }
+}
